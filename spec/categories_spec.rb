@@ -18,4 +18,12 @@ describe(Categories) do
       expect(Categories.all()).to(eq([category]))
     end
   end
+
+  describe("#==") do
+    it("is the same category if it has the same category_name") do
+      category1 = Categories.new({:id => nil, :category_name => 'food', :budget => 333 })
+      category2 = Categories.new({:id => nil, :category_name => 'food', :budget => 333 })
+      expect(category1).to(eq(category2))
+    end
+  end
 end

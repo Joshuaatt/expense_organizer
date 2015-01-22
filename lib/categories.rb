@@ -23,4 +23,8 @@ class Categories
     result = DB.exec("INSERT INTO categories (category_name, budget) VALUES ('#{@category_name}', #{@budget}) RETURNING id")
     @id = result.first().fetch("id").to_i()
   end
+
+  define_method(:==) do |another_category|
+    self.category_name().==(another_category.category_name()).&(self.id().==(another_category.id()))
+  end
 end
