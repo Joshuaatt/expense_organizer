@@ -9,4 +9,12 @@ describe(Expenses) do
       expect(Expenses.all()).to(eq([]))
     end
   end
+
+  describe("#save") do
+    it("lets you save expenses to the database") do
+      expense = Expenses.new({:id => nil, :item => 'food', :cost => 100, :date => '2015-01-22'})
+      expense.save()
+      expect(Expenses.all()).to(eq([expense]))
+    end
+  end
 end
