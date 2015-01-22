@@ -12,7 +12,7 @@ class Expenses
     returned_expenses = DB.exec("SELECT * FROM expenses;")
     expenses = []
     returned_expenses.each() do |expense|
-      id = expense[:id].to_i()
+      id = expense.fetch("id").to_i()
       item = expense.fetch("item")
       cost = expense.fetch("cost").to_i()
       date = expense.fetch("date")
@@ -24,5 +24,9 @@ class Expenses
   define_method(:save) do
     result = DB.exec("INSERT INTO expenses (item, cost, date) VALUES ('#{@item}', #{@cost}, '#{@date}') RETURNING id")
     @id = result.first().fetch("id").to_i()
+  end
+
+  define_method(:==) do |another_expense|
+    self.item().==(another_expense.item()).&(self.id().==(another_expense.id()))
   end
 end
