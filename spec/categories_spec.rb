@@ -26,4 +26,20 @@ describe(Categories) do
       expect(category1).to(eq(category2))
     end
   end
+
+  define_method("#find_expenses") do # find an expense related to a given category
+    it("returns a list of expenses in a category") do
+      
+    end
+  end
+
+  # describe(".find") do
+  #   it("returns a category by its ID number") do
+  #     test_category = Categories.new({:id => nil, :category_name => "food", :budget => 555})
+  #     test_category.save()
+  #     test_category2 = Categories.new({:id => nil, :category_name => "toys", :budget => 444})
+  #     test_category2.save()
+  #     expect(Categories.find(test_category2.id())).to(eq(test_category2))
+  #   end
+  # end
 end
