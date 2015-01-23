@@ -27,11 +27,19 @@ describe(Categories) do
     end
   end
 
-  define_method("#find_expenses") do # find an expense related to a given category
-    it("returns a list of expenses in a category") do
-      
-    end
+  describe("#add_expense") do
+    category1 = Categories.new({:id => nil, :category_name => 'food', :budget => 333 })
+    category1.save()
+    category2 = Categories.new({:id => nil, :category_name => 'toys', :budget => 444 })
+    category2.save()
+    expense1 = Expenses.new({:id => nil, :item => 'apple', :cost => 100, :date => '2015-01-22'})
+    expect(category1.expenses()).to(eq([expense1]))
   end
+  # define_method("#find_expenses") do # find an expense related to a given category
+  #   it("returns a list of expenses in a category") do
+  #
+  #   end
+  # end
 
   # describe(".find") do
   #   it("returns a category by its ID number") do

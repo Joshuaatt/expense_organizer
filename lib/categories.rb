@@ -28,6 +28,11 @@ class Categories
     self.category_name().==(another_category.category_name()).&(self.id().==(another_category.id()))
   end
 
+  define_method(:add_expense) do # add expense and relate it to a category
+    result = DB.exec("INSERT INTO expenses_categories ...")
+    expenses = []
+  end
+
   define_method(:find_expenses) do # find expenses related to a given category
       returned_expenses = DB.exec("SELECT expenses.* FROM
       categories JOIN expenses_categories ON (categories.id = expenses_categories.categories_id) JOIN expenses ON (expenses_categories.expenses_id = expenses.id) WHERE categories.id = #{self.id};")
